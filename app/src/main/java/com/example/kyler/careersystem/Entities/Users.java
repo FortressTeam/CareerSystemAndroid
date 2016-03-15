@@ -13,9 +13,10 @@ public class Users {
     private String userEmail;
     private int userStatus;
     private String userActivationKey;
+    private String userAvatar;
     private int groupID;
 
-    public Users(int ID, String username, String password, Date userRegistered, String userEmail, int userStatus, String userActivationKey, int groupID) {
+    public Users(int ID, String username, String password, Date userRegistered, String userEmail, int userStatus, String userActivationKey, String userAvatar, int groupID) {
         this.ID = ID;
         this.username = username;
         this.password = password;
@@ -23,6 +24,7 @@ public class Users {
         this.userEmail = userEmail;
         this.userStatus = userStatus;
         this.userActivationKey = userActivationKey;
+        this.userAvatar = userAvatar;
         this.groupID = groupID;
     }
 
@@ -80,6 +82,14 @@ public class Users {
 
     public void setUserActivationKey(String userActivationKey) {
         this.userActivationKey = userActivationKey;
+    }
+
+    public String getUserAvatar() {
+        return userAvatar;
+    }
+
+    public void setUserAvatar(String userAvatar) {
+        this.userAvatar = userAvatar;
     }
 
     public int getGroupID() {

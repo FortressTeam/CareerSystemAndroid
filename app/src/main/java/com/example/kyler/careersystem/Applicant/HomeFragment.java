@@ -48,8 +48,6 @@ public class HomeFragment extends Fragment implements AbsListView.OnScrollListen
             jsJob1= new JSONObject("{ \"post_id\": \"1\", \"post_title\": \"Job xxxx\", \"post_title_time\": \"4 days\", \"post_content\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\", \"post_salary\": 300, \"post_image\": \"https://cdn3.iconfinder.com/data/icons/internet-marketing/57/work_job_computer_click_color-128.png\", \"post_date\": \"12/12/2016\", \"post_status\": 1, \"category_name\": \"Information Technology\", \"company_name\": \"Enclave\" }");
             jsJob2= new JSONObject("{ \"post_id\": \"2\", \"post_title\": \"Job xxxx\", \"post_title_time\": \"2 hours\", \"post_content\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\", \"post_salary\": 300, \"post_image\": \"https://cdn3.iconfinder.com/data/icons/human-resources-management/512/relationship_office_team_work-128.png\", \"post_date\": \"12/12/2016\", \"post_status\": 1, \"category_name\": \"Information Technology\", \"company_name\": \"Enclave\" }");
         }catch(JSONException e){e.printStackTrace();}
-//        final String link1= "http://e08595.medialib.glogster.com/lornajane123/media/2e/2e77d71a7a7ac48f620e2180c18d381f19f2d250/working-togefa.jpg";
-//        final String link2= "http://a1.mzstatic.com/us/r30/Purple69/v4/93/9a/fd/939afdda-8637-2abb-52a5-ba1e9df8dfe6/icon175x175.jpeg";
         mHandler = new Handler();
         home_job_listview = (ListView) rootView.findViewById(R.id.home_job_listview);
         View footer = getActivity().getLayoutInflater().inflate(R.layout.progress_bar_footer, null);
@@ -66,7 +64,7 @@ public class HomeFragment extends Fragment implements AbsListView.OnScrollListen
         home_job_listview.setAdapter(jobListViewAdapterLoadInfinite);
         home_job_listview.setOnScrollListener(this);
         home_job_listview.setOnItemClickListener(this);
-        progressBar.setVisibility((10 < jobListViewItems.size()) ? View.VISIBLE : View.GONE);
+        progressBar.setVisibility((8 < jobListViewItems.size()) ? View.VISIBLE : View.GONE);
         final SwipeRefreshLayout swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.home_swipe);
         swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -111,7 +109,7 @@ public class HomeFragment extends Fragment implements AbsListView.OnScrollListen
         //Load more
         if(firstVisibleItem + visibleItemCount == totalItemCount && !jobListViewAdapterLoadInfinite.endReached() && !hasCallback){ //check if we've reached the bottom
             Toast.makeText(getActivity().getApplicationContext(),"Loading",Toast.LENGTH_SHORT).show();
-            mHandler.postDelayed(showMore, 3000);
+            mHandler.postDelayed(showMore, 1000);
             hasCallback = true;
         }
     }

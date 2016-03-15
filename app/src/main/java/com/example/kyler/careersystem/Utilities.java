@@ -14,9 +14,11 @@ import android.widget.ListView;
 
 import com.example.kyler.careersystem.Applicant.ChildApplicantActivity;
 import com.example.kyler.careersystem.Applicant.ChildFragments.JobDetailFragment;
+import com.example.kyler.careersystem.Applicant.Customize.JobAppliedListViewItem;
 import com.example.kyler.careersystem.Applicant.Customize.JobListViewItem;
 import com.example.kyler.careersystem.Applicant.FindFragment;
 import com.example.kyler.careersystem.Applicant.HomeFragment;
+import com.example.kyler.careersystem.Applicant.JobappliedFragment;
 import com.example.kyler.careersystem.Applicant.MyResumeFragment;
 import com.example.kyler.careersystem.Applicant.NavigationListViewAdapter;
 import com.example.kyler.careersystem.Applicant.NavigationListViewItem;
@@ -40,6 +42,39 @@ public class Utilities {
         listItem.add(new NavigationListViewItem(R.drawable.navnotificationicon,"Notifications",15,true));
         NavigationListViewAdapter adapter = new NavigationListViewAdapter(context.getApplicationContext(),listItem);
         lv.setAdapter(adapter);
+    }
+
+    public static JobAppliedListViewItem getJobAppliedLVItemfrom(JSONObject jsonObject){
+        JobAppliedListViewItem jobAppliedListViewItem=null;
+        String companyImage = null;
+        String companyName = null;
+        String postContent =null;
+        int status = 0;
+        String strStatus = "";
+        try{
+            if(jsonObject.has("company_image"))
+                companyImage = jsonObject.getString("company_image");
+            if(jsonObject.has("company_name"))
+                companyName = jsonObject.getString("company_name");
+            if(jsonObject.has("post_content"))
+                postContent = jsonObject.getString("post_content");
+            if(jsonObject.has("status"))
+                status = jsonObject.getInt("status");
+            switch (status){
+                case 1:
+                    strStatus = "Pending...";
+                    break;
+                case 2:
+                    strStatus = "Accepted";
+                    break;
+                case 3:
+                    strStatus = "Rejected";
+                    break;
+                default:break;
+            }
+            jobAppliedListViewItem = new JobAppliedListViewItem(companyImage,companyName,postContent,strStatus);
+        }catch (JSONException e){}
+        return jobAppliedListViewItem;
     }
 
     public static JobListViewItem getJobLVItemfrom(JSONObject jsonObject){
@@ -89,6 +124,7 @@ public class Utilities {
                 fragment = new HomeFragment();
                 break;
             case 5://jobapplied
+                fragment = new JobappliedFragment();
                 break;
             case 6://notifications
                 break;
