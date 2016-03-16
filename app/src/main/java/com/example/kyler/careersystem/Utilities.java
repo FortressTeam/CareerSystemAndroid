@@ -4,16 +4,10 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
-import android.view.MenuItem;
 import android.widget.ListView;
-
-import com.example.kyler.careersystem.Applicant.ChildApplicantActivity;
-import com.example.kyler.careersystem.Applicant.ChildFragments.JobDetailFragment;
 import com.example.kyler.careersystem.Applicant.Customize.JobAppliedListViewItem;
 import com.example.kyler.careersystem.Applicant.Customize.JobListViewItem;
 import com.example.kyler.careersystem.Applicant.FindFragment;
@@ -49,8 +43,9 @@ public class Utilities {
         String companyImage = null;
         String companyName = null;
         String postContent =null;
+        String companyAddress = null;
+        int salary = 0;
         int status = 0;
-        String strStatus = "";
         try{
             if(jsonObject.has("company_image"))
                 companyImage = jsonObject.getString("company_image");
@@ -58,21 +53,13 @@ public class Utilities {
                 companyName = jsonObject.getString("company_name");
             if(jsonObject.has("post_content"))
                 postContent = jsonObject.getString("post_content");
+            if(jsonObject.has("company_address"))
+                companyAddress = jsonObject.getString("company_address");
+            if(jsonObject.has("salary"))
+                salary = jsonObject.getInt("salary");
             if(jsonObject.has("status"))
                 status = jsonObject.getInt("status");
-            switch (status){
-                case 1:
-                    strStatus = "Pending...";
-                    break;
-                case 2:
-                    strStatus = "Accepted";
-                    break;
-                case 3:
-                    strStatus = "Rejected";
-                    break;
-                default:break;
-            }
-            jobAppliedListViewItem = new JobAppliedListViewItem(companyImage,companyName,postContent,strStatus);
+            jobAppliedListViewItem = new JobAppliedListViewItem(companyImage,companyName,postContent,status,companyAddress,salary);
         }catch (JSONException e){}
         return jobAppliedListViewItem;
     }

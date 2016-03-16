@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/background"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent">
     <com.github.ksoichiro.android.observablescrollview.ObservableScrollView
         android:id="@+id/job_detail_scrollview"
@@ -185,38 +185,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="3dp"/>
             <LinearLayout
+                android:paddingTop="5dp"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:background="#67809F"
+                android:paddingBottom="8dp"
+                android:layout_height="60dp"
+                android:background="@color/background"
                 android:orientation="horizontal"
-                android:weightSum="1"
+                android:gravity="center_horizontal"
                 >
                 <Button
                     android:id="@+id/job_detail_btapply"
-                    android:layout_weight="0.6"
-                    android:layout_width="0dp"
+                    android:layout_width="150dp"
                     android:text="@string/Apply"
                     android:textColor="@color/Black"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="70dp"
-                    android:layout_marginTop="5dp" />
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.4"
-                    android:gravity="right"
-                    >
-                    <ImageView
-                        android:id="@+id/job_detail_imgFavorite"
-                        android:layout_marginRight="10dp"
-                        android:layout_width="50dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="3dp"
-                        android:layout_marginTop="3dp"
-                        android:background="@drawable/star_unfollow" />
-                </LinearLayout>
+                    android:layout_height="match_parent" />
             </LinearLayout>
         </LinearLayout>
     </com.github.ksoichiro.android.observablescrollview.ObservableScrollView>
-</LinearLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/job_detail_floatactionbutton_favorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        app:fabSize="mini"
+        app:backgroundTint="@color/navigationviewbackground"
+        android:src="@drawable/star"
+        />
+</RelativeLayout>

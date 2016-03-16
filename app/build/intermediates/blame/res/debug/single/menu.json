@@ -1,15 +1,7 @@
 [
     {
-        "merged": "/home/kyler/AndroidStudioProjects/CareerSystem/app/build/intermediates/res/merged/debug/menu/applicant_main.xml",
-        "source": "/home/kyler/AndroidStudioProjects/CareerSystem/app/src/main/res/menu/applicant_main.xml"
-    },
-    {
         "merged": "/home/kyler/Fortress/CareerSystemAndroid/app/build/intermediates/res/merged/debug/menu/applicant_main.xml",
         "source": "/home/kyler/Fortress/CareerSystemAndroid/app/src/main/res/menu/applicant_main.xml"
-    },
-    {
-        "merged": "/home/kyler/AndroidStudioProjects/CareerSystem/app/build/intermediates/res/merged/debug/menu/activity_applicant_main_drawer.xml",
-        "source": "/home/kyler/AndroidStudioProjects/CareerSystem/app/src/main/res/menu/activity_applicant_main_drawer.xml"
     },
     {
         "merged": "/home/kyler/Fortress/CareerSystemAndroid/app/build/intermediates/res/merged/debug/menu/activity_applicant_main_drawer.xml",

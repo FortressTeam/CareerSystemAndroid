@@ -1,5 +1,6 @@
 package com.example.kyler.careersystem.Applicant;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import com.example.kyler.careersystem.Applicant.Customize.JobAppliedListViewAdapterLoadInfinite;
 import com.example.kyler.careersystem.Applicant.Customize.JobAppliedListViewItem;
 import com.example.kyler.careersystem.Applicant.Customize.JobListViewAdapterLoadInfinite;
+import com.example.kyler.careersystem.Applicant.Customize.onDeleteJobApplied;
 import com.example.kyler.careersystem.R;
 import com.example.kyler.careersystem.Utilities;
 
@@ -38,20 +40,33 @@ public class JobappliedFragment extends Fragment implements AbsListView.OnScroll
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.applicant_jobapplied_fragment, container, false);
         ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Job Applied");
         mHandler = new Handler();
-        JSONObject jsJob1=null,jsJob2=null;
+        JSONObject jsJob1=null,jsJob2=null,jsJob3=null;
         try {
             jsJob1 = new JSONObject("{\n" +
                     "  \"company_image\": \"https://www.fs-net.de/assets/Uploads/home/_resampled/ResizedImage130130-icon-fabrik-blue.png\",\n" +
                     "  \"company_name\": \"Enclave\",\n" +
                     "  \"post_content\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\",\n" +
-                    "  \"status\": 2\n" +
+                    "  \"company_address\": \"Da Nang City\",\n" +
+                    "  \"salary\": 5500000,\n" +
+                    "  \"status\": 1\n" +
                     "}");
             jsJob2 = new JSONObject("{\n" +
                     "  \"company_image\": \"http://www.microindustrialmart.com/wp-content/uploads/2015/12/parentcompany.png\",\n" +
                     "  \"company_name\": \"Enclave\",\n" +
                     "  \"post_content\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\",\n" +
-                    "  \"status\": 1\n" +
+                    "  \"company_address\": \"Da Nang City\",\n" +
+                    "  \"salary\": 5500000,\n" +
+                    "  \"status\": 2\n" +
+                    "}");
+            jsJob3 = new JSONObject("{\n" +
+                    "  \"company_image\": \"http://www.microindustrialmart.com/wp-content/uploads/2015/12/parentcompany.png\",\n" +
+                    "  \"company_name\": \"Enclave\",\n" +
+                    "  \"post_content\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\",\n" +
+                    "  \"company_address\": \"Da Nang City\",\n" +
+                    "  \"salary\": 5500000,\n" +
+                    "  \"status\": 3\n" +
                     "}");
         } catch (JSONException e) {
             e.printStackTrace();
@@ -62,12 +77,14 @@ public class JobappliedFragment extends Fragment implements AbsListView.OnScroll
         jobappliedListView.addFooterView(footer);
         jobAppliedListViewItems = new ArrayList<JobAppliedListViewItem>();
         for(int i=0;i<14;i++){
-            if(i%2==0)
+            if(i%3==0)
                 jobAppliedListViewItems.add(Utilities.getJobAppliedLVItemfrom(jsJob1));
-            else
+            else if(i%2==0)
                 jobAppliedListViewItems.add(Utilities.getJobAppliedLVItemfrom(jsJob2));
+            else
+                jobAppliedListViewItems.add(Utilities.getJobAppliedLVItemfrom(jsJob3));
         }
-        jobAppliedListViewAdapterLoadInfinite = new JobAppliedListViewAdapterLoadInfinite(getActivity().getApplicationContext(),jobAppliedListViewItems,8,2);
+        jobAppliedListViewAdapterLoadInfinite = new JobAppliedListViewAdapterLoadInfinite(getActivity(), jobAppliedListViewItems, 8, 2);
         jobappliedListView.setAdapter(jobAppliedListViewAdapterLoadInfinite);
         progressBar.setVisibility((8 < jobAppliedListViewItems.size()) ? View.VISIBLE : View.GONE);
         jobappliedListView.setOnScrollListener(this);
@@ -79,7 +96,7 @@ public class JobappliedFragment extends Fragment implements AbsListView.OnScroll
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
+        //Show JobApplied Information space:
     }
 
     @Override

@@ -1,7 +1,9 @@
 package com.example.kyler.careersystem.Applicant.ChildFragments;
 
 import android.app.Fragment;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
@@ -30,7 +32,8 @@ public class JobDetailFragment extends Fragment implements ObservableScrollViewC
     private ObservableScrollView scrollView;
     private TextView jobDetailCompanyInfo,jobDetailTitle,jobDetailSalary,jobDetailRequired,jobDetailOverview,jobDetailMoreInfo;
     private Button btApply;
-    private ImageView postImage,imgFavorite;
+    private ImageView postImage;
+    private FloatingActionButton jobDetailFloatactionbuttonFavorite;
 
     private JSONObject jsJob1;
 
@@ -44,9 +47,14 @@ public class JobDetailFragment extends Fragment implements ObservableScrollViewC
         Toast.makeText(getActivity().getApplicationContext(),bundle.getString("sendData"),Toast.LENGTH_LONG).show();
         postImage = (ImageView) rootView.findViewById(R.id.job_detail_image);
         btApply = (Button) rootView.findViewById(R.id.job_detail_btapply);
-        imgFavorite = (ImageView) rootView.findViewById(R.id.job_detail_imgFavorite);
-        btApply.setOnClickListener(this);
-        imgFavorite.setOnClickListener(this);
+        jobDetailFloatactionbuttonFavorite = (FloatingActionButton) rootView.findViewById(R.id.job_detail_floatactionbutton_favorite);
+        jobDetailFloatactionbuttonFavorite.setOnClickListener(this);
+//        if(bundle.getBoolean("applied")) {
+            btApply.setVisibility(View.VISIBLE);
+            btApply.setOnClickListener(this);
+//        }else{
+//            btApply.setVisibility(View.GONE);
+//        }
         jobDetailCompanyInfo = (TextView) rootView.findViewById(R.id.job_detail_companyinfo);
         jobDetailTitle = (TextView) rootView.findViewById(R.id.job_detail_title);
         jobDetailSalary = (TextView) rootView.findViewById(R.id.job_detail_salary);
@@ -58,7 +66,7 @@ public class JobDetailFragment extends Fragment implements ObservableScrollViewC
                     " \"post_title\": \"Job xxxx\"," +
                     " \"post_required\": \"5 years experience\"," +
                     " \"post_moreinfo\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\"," +
-                    " \"post_content\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\"," +
+                    "  \"post_content\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\",\n" +
                     " \"post_salary\": 300," +
                     " \"post_image\": \"https://cdn1.iconfinder.com/data/icons/avatar-3/512/Pilot-128.png\"," +
                     " \"post_date\": \"12/12/2016\"," +
@@ -83,7 +91,6 @@ public class JobDetailFragment extends Fragment implements ObservableScrollViewC
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
         scrollView = (ObservableScrollView) rootView.findViewById(R.id.job_detail_scrollview);
         scrollView.setScrollViewCallbacks(this);
         return rootView;
@@ -122,9 +129,9 @@ public class JobDetailFragment extends Fragment implements ObservableScrollViewC
             case R.id.job_detail_btapply:
                 Toast.makeText(getActivity().getApplicationContext(), "You applied this job successfull!", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.job_detail_imgFavorite:
-                Toast.makeText(getActivity().getApplicationContext(), "Favorited!", Toast.LENGTH_SHORT).show();
-                view.setBackgroundResource(R.drawable.star_follow);
+            case R.id.job_detail_floatactionbutton_favorite:
+                Toast.makeText(getActivity().getApplicationContext(), "FloatActionButton!", Toast.LENGTH_SHORT).show();
+                jobDetailFloatactionbuttonFavorite.setImageResource(R.drawable.star_follow);
                 break;
             default:
                 break;

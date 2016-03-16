@@ -2,22 +2,16 @@ package com.example.kyler.careersystem.Applicant.Customize;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.example.kyler.careersystem.ApplicantMainActivity;
 import com.example.kyler.careersystem.R;
-import com.example.kyler.careersystem.Utilities;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -26,15 +20,14 @@ import java.util.ArrayList;
  * Created by kyler on 15/03/2016.
  */
 public class JobAppliedListViewAdapterLoadInfinite  extends ArrayAdapter<JobAppliedListViewItem>{
-    final private Context context;
-    private ArrayList<JobAppliedListViewItem> jobAppliedListViewItems;
+    private Activity context;
+    public ArrayList<JobAppliedListViewItem> jobAppliedListViewItems;
     private int count;
+    private int jobID;
     private int stepNumber;
     private int startCount;
-    private Handler mHandler;
-    private int jobID;
 
-    public JobAppliedListViewAdapterLoadInfinite(Context context, ArrayList<JobAppliedListViewItem> jobAppliedListViewItems, int startCount, int stepNumber) {
+    public JobAppliedListViewAdapterLoadInfinite(Activity context, ArrayList<JobAppliedListViewItem> jobAppliedListViewItems, int startCount, int stepNumber) {
         super(context, R.layout.applicant_jobapplied_listviewitem,jobAppliedListViewItems);
         this.context = context;
         this.jobAppliedListViewItems = jobAppliedListViewItems;
@@ -54,34 +47,58 @@ public class JobAppliedListViewAdapterLoadInfinite  extends ArrayAdapter<JobAppl
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.applicant_jobapplied_listviewitem,null);
         }
+        LinearLayout job_applied_header = (LinearLayout) view.findViewById(R.id.job_applied_header);
         ImageView job_applied_companyicon = (ImageView) view.findViewById(R.id.job_applied_companyicon);
         TextView job_applied_listviewitem_companyname = (TextView) view.findViewById(R.id.job_applied_listviewitem_companyname);
         TextView job_applied_listviewitem_content = (TextView) view.findViewById(R.id.job_applied_listviewitem_content);
         TextView job_applied_listviewitem_status = (TextView) view.findViewById(R.id.job_applied_listviewitem_status);
+        TextView job_applied_listviewitem_address = (TextView) view.findViewById(R.id.job_applied_listviewitem_address);
+        TextView job_applied_listviewitem_salary = (TextView) view.findViewById(R.id.job_applied_listviewitem_salary);
+        int status=jobAppliedListViewItems.get(i).getStatus();
+        String jobStatus = null;
+        switch (status){
+            case 1:
+                jobStatus = "Pending...";
+                job_applied_header.setBackgroundResource(R.color.jobappliedpending);
+                break;
+            case 2:
+                jobStatus = "Accepted";
+                job_applied_header.setBackgroundResource(R.color.jobappliedaccepted);
+                break;
+            case 3:
+                jobStatus = "Rejected";
+                job_applied_header.setBackgroundResource(R.color.jobappliedreject);
+                break;
+            default:break;
+        }
         Picasso.with(context).load(jobAppliedListViewItems.get(i).getCompanyImage()).into(job_applied_companyicon);
         job_applied_listviewitem_companyname.setText(jobAppliedListViewItems.get(i).getCompanyName());
         job_applied_listviewitem_content.setText(jobAppliedListViewItems.get(i).getJobOverview());
-        job_applied_listviewitem_status.setText(jobAppliedListViewItems.get(i).getStatus());
+        job_applied_listviewitem_status.setText(jobStatus);
+        job_applied_listviewitem_address.setText(jobAppliedListViewItems.get(i).getCompanyAddress());
+        job_applied_listviewitem_salary.setText(jobAppliedListViewItems.get(i).getSalary()+"");
         ImageView jobappliedDelete = (ImageView) view.findViewById(R.id.jobapplied_delete);
-        mHandler = new Handler();
         jobappliedDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                jobAppliedListViewItems.remove(i);
-                notifyDataSetChanged();
-                count--;
+                jobID=i;
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage("Do you want to delete?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                //Deleting Jobapplied space:
+                                jobAppliedListViewItems.remove(jobID);
+                                notifyDataSetChanged();
+                                count--;
+                            }
+                        })
+                        .setNegativeButton("No",null);
+                builder.show();
             }
         });
         return view;
     }
-    private View.OnClickListener deleteJob = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            jobAppliedListViewItems.remove(jobID);
-            notifyDataSetChanged();
-            count--;
-        }
-    };
 
     public boolean showMore(){
         if(count == jobAppliedListViewItems.size()) {

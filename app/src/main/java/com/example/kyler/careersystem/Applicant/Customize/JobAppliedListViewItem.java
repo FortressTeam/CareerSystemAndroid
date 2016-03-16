@@ -9,13 +9,17 @@ public class JobAppliedListViewItem {
     private String companyImage;
     private String companyName;
     private String jobOverview;
-    private String status;
+    private int status;
+    private String companyAddress;
+    private int salary;
 
-    public JobAppliedListViewItem(String companyImage, String companyName, String jobOverview, String status) {
+    public JobAppliedListViewItem(String companyImage, String companyName, String jobOverview, int status, String companyAddress, int salary) {
         this.companyImage = companyImage;
         this.companyName = companyName;
         this.jobOverview = jobOverview;
         this.status = status;
+        this.companyAddress = companyAddress;
+        this.salary = salary;
     }
 
     public String getCompanyImage() {
@@ -42,11 +46,27 @@ public class JobAppliedListViewItem {
         this.jobOverview = jobOverview;
     }
 
-    public String getStatus() {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getCompanyAddress() {
+        return companyAddress;
+    }
+
+    public void setCompanyAddress(String companyAddress) {
+        this.companyAddress = companyAddress;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
     }
 }

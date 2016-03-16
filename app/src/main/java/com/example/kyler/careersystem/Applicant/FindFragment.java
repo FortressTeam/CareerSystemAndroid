@@ -33,6 +33,7 @@ public class FindFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.applicant_find_job_fragment ,container,false);
         ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Find");
         findJobInput = (EditText) rootView.findViewById(R.id.find_job_input_edittext);
         findJobCity = (Spinner) rootView.findViewById(R.id.find_job_city_spinner);
         findJobTown = (Spinner) rootView.findViewById(R.id.find_job_town_spinner);

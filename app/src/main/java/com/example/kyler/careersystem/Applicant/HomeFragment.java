@@ -43,10 +43,33 @@ public class HomeFragment extends Fragment implements AbsListView.OnScrollListen
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.applicant_home_fragment,container,false);
         ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle("Home");
         JSONObject jsJob1=null,jsJob2=null;
         try{
-            jsJob1= new JSONObject("{ \"post_id\": \"1\", \"post_title\": \"Job xxxx\", \"post_title_time\": \"4 days\", \"post_content\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\", \"post_salary\": 300, \"post_image\": \"https://cdn3.iconfinder.com/data/icons/internet-marketing/57/work_job_computer_click_color-128.png\", \"post_date\": \"12/12/2016\", \"post_status\": 1, \"category_name\": \"Information Technology\", \"company_name\": \"Enclave\" }");
-            jsJob2= new JSONObject("{ \"post_id\": \"2\", \"post_title\": \"Job xxxx\", \"post_title_time\": \"2 hours\", \"post_content\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\", \"post_salary\": 300, \"post_image\": \"https://cdn3.iconfinder.com/data/icons/human-resources-management/512/relationship_office_team_work-128.png\", \"post_date\": \"12/12/2016\", \"post_status\": 1, \"category_name\": \"Information Technology\", \"company_name\": \"Enclave\" }");
+            jsJob1= new JSONObject("{\n" +
+                    "  \"post_id\": \"1\",\n" +
+                    "  \"post_title\": \"Job xxxx\",\n" +
+                    "  \"post_title_time\": \"4 days\",\n" +
+                    "  \"post_content\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\",\n" +
+                    "  \"post_salary\": 300,\n" +
+                    "  \"post_image\": \"https://cdn3.iconfinder.com/data/icons/internet-marketing/57/work_job_computer_click_color-128.png\",\n" +
+                    "  \"post_date\": \"12/12/2016\",\n" +
+                    "  \"post_status\": 1,\n" +
+                    "  \"category_name\": \"Information Technology\",\n" +
+                    "  \"company_name\": \"Enclave\"\n" +
+                    "}");
+            jsJob2= new JSONObject("{\n" +
+                    "  \"post_id\": \"2\",\n" +
+                    "  \"post_title\": \"Job xxxx\",\n" +
+                    "  \"post_title_time\": \"2 hours\",\n" +
+                    "  \"post_content\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.\",\n" +
+                    "  \"post_salary\": 300,\n" +
+                    "  \"post_image\": \"https://cdn3.iconfinder.com/data/icons/human-resources-management/512/relationship_office_team_work-128.png\",\n" +
+                    "  \"post_date\": \"12/12/2016\",\n" +
+                    "  \"post_status\": 1,\n" +
+                    "  \"category_name\": \"Information Technology\",\n" +
+                    "  \"company_name\": \"Enclave\"\n" +
+                    "}");
         }catch(JSONException e){e.printStackTrace();}
         mHandler = new Handler();
         home_job_listview = (ListView) rootView.findViewById(R.id.home_job_listview);
