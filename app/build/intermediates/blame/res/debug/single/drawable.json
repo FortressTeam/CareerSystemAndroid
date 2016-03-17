@@ -80,6 +80,10 @@
         "source": "/home/kyler/Fortress/CareerSystemAndroid/app/src/main/res/drawable/side_nav_bar.xml"
     },
     {
+        "merged": "/home/kyler/Fortress/CareerSystemAndroid/app/build/intermediates/res/merged/debug/drawable/customline.xml",
+        "source": "/home/kyler/Fortress/CareerSystemAndroid/app/src/main/res/drawable/customline.xml"
+    },
+    {
         "merged": "/home/kyler/Fortress/CareerSystemAndroid/app/build/intermediates/res/merged/debug/drawable/star_unfollow.png",
         "source": "/home/kyler/Fortress/CareerSystemAndroid/app/src/main/res/drawable/star_unfollow.png"
     },
@@ -98,6 +102,10 @@
     {
         "merged": "/home/kyler/Fortress/CareerSystemAndroid/app/build/intermediates/res/merged/debug/drawable/abc_textfield_search_material.xml",
         "source": "/home/kyler/Fortress/CareerSystemAndroid/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/drawable/abc_textfield_search_material.xml"
+    },
+    {
+        "merged": "/home/kyler/Fortress/CareerSystemAndroid/app/build/intermediates/res/merged/debug/drawable/customborder.xml",
+        "source": "/home/kyler/Fortress/CareerSystemAndroid/app/src/main/res/drawable/customborder.xml"
     },
     {
         "merged": "/home/kyler/Fortress/CareerSystemAndroid/app/build/intermediates/res/merged/debug/drawable/design_fab_background.xml",

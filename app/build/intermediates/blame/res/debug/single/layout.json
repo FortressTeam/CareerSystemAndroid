@@ -164,6 +164,10 @@
         "source": "/home/kyler/Fortress/CareerSystemAndroid/app/src/main/res/layout/applicant_home_fragment.xml"
     },
     {
+        "merged": "/home/kyler/Fortress/CareerSystemAndroid/app/build/intermediates/res/merged/debug/layout/applicant_company_information_fragment.xml",
+        "source": "/home/kyler/Fortress/CareerSystemAndroid/app/src/main/res/layout/applicant_company_information_fragment.xml"
+    },
+    {
         "merged": "/home/kyler/Fortress/CareerSystemAndroid/app/build/intermediates/res/merged/debug/layout/abc_action_bar_view_list_nav_layout.xml",
         "source": "/home/kyler/Fortress/CareerSystemAndroid/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/layout/abc_action_bar_view_list_nav_layout.xml"
     },
