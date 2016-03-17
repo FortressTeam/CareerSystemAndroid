@@ -12,10 +12,16 @@
         android:layout_marginRight="5dp"
         android:layout_height="match_parent">
         <LinearLayout
-            android:background="@color/White"
+            android:background="@color/background"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+            <LinearLayout
+                android:paddingLeft="5dp"
+                android:background="@drawable/customborder"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/company_information_image"
                 android:layout_gravity="center_horizontal"
@@ -36,6 +42,7 @@
                     />
                 <TextView
                     android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/Black"
@@ -66,7 +73,6 @@
                     android:textSize="@dimen/activity_content_big"
                     android:text="abc"
                     android:gravity="bottom"
-                    android:textStyle="bold"
                     />
             </LinearLayout>
             <LinearLayout
@@ -90,21 +96,35 @@
                     android:textSize="@dimen/activity_content_big"
                     android:text="abc"
                     android:gravity="bottom"
-                    android:textStyle="bold"
                     />
             </LinearLayout>
+            </LinearLayout>
+
             <TextView
                 android:background="@color/background"
                 android:layout_width="match_parent"
                 android:layout_height="3dp"/>
+
             <LinearLayout
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
                 android:orientation="vertical"
-                android:background="@color/White"
+                android:background="@drawable/customborder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <TextView
+                    android:background="@drawable/customline"
+                    android:textColor="@color/Black"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/activity_content_big"
                     android:text="Company Overview:"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:textColor="@color/Black"
+                    android:textSize="@dimen/activity_content_small"
+                    android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </LinearLayout>
         </LinearLayout>

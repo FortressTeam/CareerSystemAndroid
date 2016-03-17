@@ -1,6 +1,10 @@
 [
     {
-        "merged": "/home/kyler/Fortress/CareerSystemAndroid/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi-v4/ic_launcher.png",
-        "source": "/home/kyler/Fortress/CareerSystemAndroid/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+        "merged": "C:\\Users\\Duck_Ky\\Documents\\GitHub\\CareerSystemAndroid\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi-v4\\ic_launcher.png",
+        "source": "C:\\Users\\Duck_Ky\\Documents\\GitHub\\CareerSystemAndroid\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\home\\kyler\\Fortress\\CareerSystemAndroid\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi-v4\\ic_launcher.png",
+        "source": "C:\\home\\kyler\\Fortress\\CareerSystemAndroid\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     }
 ]
